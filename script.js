@@ -104,8 +104,8 @@ function viewAllVisitors(){
     const vElement = document.getElementById('all-visitors');
  const view =   data.map((item)=>{
      let checkAccess = getAllowedVisitors().map((e)=>{return e.name.indexOf(item.name)});
-let access =  checkAccess[1] >= 0? "Allowed": "Denied";
-console.log(checkAccess[1]);
+let access =  checkAccess[0] >= 0? "Allowed": "Denied";
+console.log(checkAccess[0]);
 return `<li>
 <p>Name: ${item.name}   <span>Age: ${item.age}</span>  <span>Face Mask: ${item.hasFaceMask? "Yes":"No"}</span> <span>Access: ${access}</span> </p>
 </li>`;
