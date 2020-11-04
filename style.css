@@ -80,8 +80,22 @@ p{
     font-size: 4rem;
     font-weight: 2000;
 }
+ol{
+    display: inline-block;
+    color: white;
+    width: 40rem;
+    text-align: left;
+}
+li  p{
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
 
-@media screen and (max-width: 400px){
+li span{
+    margin-left:3rem;
+}
+
+@media screen and (max-width: 600px){
 .form{
 width: 100%
 }
@@ -97,5 +111,11 @@ form{
     display: block;
 width: 100%;    
 }
-
+ol{
+    width: 100%;
+   display: block;
+}
+li span{
+    margin-left: 0.3rem;
+}
 }

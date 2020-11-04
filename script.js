@@ -14,8 +14,7 @@ if(!age || !name){
     alert("please fill all required filled")
     return;
 }else{
-    const newVisitor = {name, age};
-console.log(name + "   "  + age);
+    const newVisitor = {name, age, hasFaceMask};
 save(newVisitor);
 allowedEl.innerText = "Allowed Visitors: "+ getAllowedVisitors().length;
 deniedEl.innerText = "Denied visitors: " + getDeniedVisitors().length;    
@@ -96,6 +95,23 @@ function clearCounter(){
     localStorage.removeItem('allowed');
     localStorage.removeItem('denied');
 window.location.reload();
+}
+
+
+//view visitors
+function viewAllVisitors(){
+    const data = getVisitors();
+    const vElement = document.getElementById('all-visitors');
+ const view =   data.map((item)=>{
+     let checkAccess = getAllowedVisitors().map((e)=>{return e.name.indexOf(item.name)});
+let access =  checkAccess[1] >= 0? "Allowed": "Denied";
+console.log(checkAccess[1]);
+return `<li>
+<p>Name: ${item.name}   <span>Age: ${item.age}</span>  <span>Face Mask: ${item.hasFaceMask? "Yes":"No"}</span> <span>Access: ${access}</span> </p>
+</li>`;
+
+    })
+    vElement.innerHTML=view.join('\n');
 }
 
 //load javascript when windows start
