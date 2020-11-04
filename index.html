@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitotech Shoping Mall</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <h1 class="welcome">Welcome to Dev Mall</h1>
+<div class="content">
+    <div >
+       <h1 class="header">Security check</h1>
+      <p>Please fill the below form to gain access to the mall.</p>     
+    </div>
+  
+      <div class="form">
+          <form>
+              <div>
+                      <div>
+                        <label for="name">Name:</label> <br>
+                      <input type="text" id="name" name="name" placeholder="Please enter name" required>    
+                      </div>
+                    <div>
+                           <label for="age">Age:</label> <br>
+                      <input type="number" id="age" name="age" placeholder="Please enter your age" required> 
+                    </div>
+                    <div>
+                        <label for="mask">Face Mask:</label>
+                        <select name="mask" id="mask" form="maskform" required>
+                            <option value=true>Yes</option>
+                            <option value=false>No</option>
+                          </select>
+                 </div>
+                  
+                  </div>
+                
+               <div>
+                <button id="sumbit" type="submit" onclick="getInput();">Submit</button>
+            </div>    
+ 
+             
+          </form>
+
+          <div>
+              <p><span class="allowed" id="allowed"></span> <span class="denied" id="denied"></span></p>
+          </div>
+          <div>
+            <button  onclick="clearCounter();">Clear counter</button>
+        </div>  
+      </div>
+      
+</div>
+
+
+
+<script src="./script.js"></script>
+  
+</body>
+</html>
