@@ -5,27 +5,35 @@ let hasFaceMaskEl = document.getElementById('mask');
 let nameEl = document.getElementById('name');
 let ageEl = document.getElementById('age');
 let hasFaceMask = "true";
+
+
 //get and save user input
 function getInput(){
   
-
-
 let name = nameEl.value;
 let age = ageEl.value;
 let genderEl = document.querySelector('input[name = gender]:checked');
  hasFaceMask = hasFaceMaskEl.value;
 let gender = genderEl.value;
+let id = randomID();
+
+//
 if(!age || !name){
     alert("please fill all required filled")
     return;
 }else{
-    const newVisitor = {name, age, hasFaceMask, gender};
+
+    //create visitoe object
+    const newVisitor = {id, name, age, hasFaceMask, gender};
 save(newVisitor);
 allowedEl.innerText = "Allowed Visitors: "+ getAllowedVisitors().length;
 deniedEl.innerText = "Denied visitors: " + getDeniedVisitors().length;    
 }
+
+//reset the input
 nameEl.value = '';
 ageEl.value ='';
+
 viewAllVisitors();
 }
 
@@ -38,7 +46,7 @@ console.log(JSON.stringify(visitors) );
 visitors.push(visitor );
 localStorage.setItem("visitors", JSON.stringify(visitors) );
 
-//check age and mask of visitors
+//check age and face mask status of visitors
 if(visitor.age <12){
     deniedVisitors.push(visitor);
     localStorage.setItem("denied", JSON.stringify(deniedVisitors) );
@@ -58,7 +66,7 @@ else{
 }
 }
 
-//get from local storage
+//get visitors from local storage
 function getVisitors(){
     const visitors =JSON.parse(localStorage.getItem('visitors')) ;
     
@@ -72,7 +80,7 @@ else{
 
 }
 
-
+//get allowed from local storage
 function getAllowedVisitors(){
     const visitors =JSON.parse(localStorage.getItem('allowed')) ;
     //check if there are visitors 
@@ -85,6 +93,7 @@ function getAllowedVisitors(){
 }
 
 
+//get denied visitors from localstorage
 function getDeniedVisitors(){
     const visitors =JSON.parse(localStorage.getItem('denied')) ;
     //check if there are visitors 
@@ -110,9 +119,15 @@ function viewAllVisitors(){
     const data = getVisitors();
     const vElement = document.getElementById('all-visitors');
  const view =   data.map((item)=>{
-     let visitorInAllowed = getAllowedVisitors().map((val)=>{return val.name.indexOf(item.name)});
-let access =  visitorInAllowed[0] >= 0? "Allowed": "Denied";
-console.log(visitorInAllowed[0]);
+
+//check if a visitor is in the allowed array
+     let visitorInAllowed = getAllowedVisitors().find((val)=>{
+         console.log("all: "+ item.name + "   allowed: "+val.name);
+         return val.id ===item.id;
+        });
+        console.log(visitorInAllowed);
+let access =  visitorInAllowed? "Allowed": "Denied";
+
 return ` 
 <tr>
 <td>${item.name}</td>
@@ -131,6 +146,16 @@ return `
     <th>ACCESS</th>
     </tr>`+ view.join('\n');
 }
+
+//generate a random id
+function randomID() {
+    var letters = '0123456789ABCDEF';
+    var id = 'A';
+    for (var i = 0; i < 9; i++) {
+      id += letters[Math.floor(Math.random() * 16)];
+    }
+    return id;
+  }
 
 //load javascript when windows start
 (function(){
