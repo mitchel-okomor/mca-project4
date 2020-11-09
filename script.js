@@ -1,18 +1,20 @@
 
 let allowedEl = document.getElementById('allowed');
 let deniedEl = document.getElementById('denied');
-let hasFaceMask = false;
-
-
+let hasFaceMaskEl = document.getElementById('mask');
+let nameEl = document.getElementById('name');
+let ageEl = document.getElementById('age');
+let hasFaceMask = "true";
 //get and save user input
 function getInput(){
-    
-    const name = document.getElementById('name').value;
-const age = document.getElementById('age').value;
-hasFaceMask = document.getElementById('mask').value;
-let gender = document.querySelector('input[name = gender]:checked').value;
-console.log(gender);
+  
 
+
+let name = nameEl.value;
+let age = ageEl.value;
+let genderEl = document.querySelector('input[name = gender]:checked');
+ hasFaceMask = hasFaceMaskEl.value;
+let gender = genderEl.value;
 if(!age || !name){
     alert("please fill all required filled")
     return;
@@ -22,7 +24,8 @@ save(newVisitor);
 allowedEl.innerText = "Allowed Visitors: "+ getAllowedVisitors().length;
 deniedEl.innerText = "Denied visitors: " + getDeniedVisitors().length;    
 }
-
+nameEl.value = '';
+ageEl.value ='';
 viewAllVisitors();
 }
 
