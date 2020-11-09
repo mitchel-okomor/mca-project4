@@ -42,7 +42,6 @@ function save(visitor){
 const visitors = getVisitors();
 const allowedVisitors = getAllowedVisitors();
 const deniedVisitors = getDeniedVisitors();
-console.log(JSON.stringify(visitors) );
 visitors.push(visitor );
 localStorage.setItem("visitors", JSON.stringify(visitors) );
 
@@ -122,10 +121,8 @@ function viewAllVisitors(){
 
 //check if a visitor is in the allowed array
      let visitorInAllowed = getAllowedVisitors().find((val)=>{
-         console.log("all: "+ item.name + "   allowed: "+val.name);
          return val.id ===item.id;
         });
-        console.log(visitorInAllowed);
 let access =  visitorInAllowed? "Allowed": "Denied";
 
 return ` 
@@ -160,8 +157,6 @@ function randomID() {
 //load javascript when windows start
 (function(){
     allowedEl.innerText ="Allowed visitors: "+ getAllowedVisitors().length;
-    deniedEl.innerText = "Denied visitors: " + getDeniedVisitors().length;
-    console.log("visitors:"+ getVisitors());
-    ;
+    deniedEl.innerText = "Denied visitors: " + getDeniedVisitors().length;    ;
 })(); 
 
