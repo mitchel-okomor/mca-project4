@@ -16,7 +16,7 @@
     </div>
   
       <div class="form">
-          <form>
+          <form onsubmit="return false">
               <div>
                       <div>
                         <label for="name">Name:</label> <br>
@@ -26,6 +26,20 @@
                            <label for="age">Age:</label> <br>
                       <input type="number" id="age" name="age" placeholder="Please enter your age" required> 
                     </div>
+                    <div class="radio">
+                      <p style="margin-bottom: 0; margin-top: 0.5rem;">Gender:
+                      </p>
+<div>
+ <input type="radio" id="male" name="gender" value="Male">
+ <label for="male">Male</label> <br> 
+</div>
+          
+<div><input type="radio" id="female" name="gender" value="Female">
+<label for="female">Female</label><br></div>
+
+                    </div>
+                    <br>
+                    <br>
                     <div>
                         <label for="mask">Face Mask:</label>
                         <select name="mask" id="mask" form="maskform" required>
@@ -55,9 +69,10 @@
         <button style="width: fit-content; margin-top: 1.4rem;" onclick="viewAllVisitors();">View all visitors</button>
       </div>
 
-      <ol type="1" id="all-visitors" >
-
-      </ol>
+      <table id="all-visitors">
+      
+        
+      </table>
 </div>
 
 
